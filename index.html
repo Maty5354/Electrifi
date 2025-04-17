@@ -1,0 +1,2844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electrifi - Premium Electronics</title>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+  <style>
+    :root {
+      /* Light theme colors */
+      --primary: var(--primary-light);
+      --text: var(--text-light);
+      --bg: var(--bg-light);
+      
+      /* Light theme variables */
+      --primary-light: #ffffff;
+      --text-light: #333333;
+      --bg-light: #f5f5f7;
+      
+      /* Dark theme variables */
+      --primary-dark: #121212;
+      --text-dark: #f5f5f7;
+      --bg-dark: #1a1a1a;
+      
+      /* Other colors */
+      --accent: #3b82f6;
+      --accent-hover: #2563eb;
+      --gray-100: #f3f4f6;
+      --gray-200: #e5e7eb;
+      --gray-300: #d1d5db;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+    }
+
+    body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Header */
+    header {
+      background-color: var(--primary-light);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: background-color 0.3s;
+    }
+
+    .dark-mode header {
+      background-color: var(--primary-dark);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+      color: var(--accent);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+    }
+
+    .logo i {
+      margin-right: 10px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .nav-links li {
+      margin-left: 30px;
+    }
+
+    .nav-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    .dark-mode .nav-links a {
+      color: var(--text-dark);
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-bar {
+      position: relative;
+      margin-right: 20px;
+    }
+
+    .search-bar input {
+      padding: 8px 15px 8px 35px;
+      border-radius: 20px;
+      border: 1px solid var(--gray-300);
+      background-color: var(--primary-light);
+      width: 200px;
+      font-size: 14px;
+      transition: all 0.3s;
+    }
+
+    .dark-mode .search-bar input {
+      background-color: var(--gray-800);
+      border-color: var(--gray-900);
+      color: var(--text-dark);
+    }
+
+    .search-bar i {
+      position: absolute;
+      left: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gray-800);
+    }
+
+    .dark-mode .search-bar i {
+      color: var(--gray-300);
+    }
+
+    .search-bar input:focus {
+      outline: none;
+      width: 250px;
+      border-color: var(--accent);
+    }
+
+    .icon-button {
+      background: transparent;
+      border: none;
+      color: var(--text-light);
+      font-size: 18px;
+      cursor: pointer;
+      margin-left: 15px;
+      position: relative;
+      transition: color 0.2s;
+    }
+
+    .dark-mode .icon-button {
+      color: var(--text-dark);
+    }
+
+    .icon-button:hover {
+      color: var(--accent);
+    }
+
+    .cart-count {
+      position: absolute;
+      top: -8px;
+      right: -8px;
+      background-color: var(--accent);
+      color: white;
+      font-size: 11px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* Hero Carousel */
+    .carousel {
+      position: relative;
+      overflow: hidden;
+      height: 500px;
+      background-color: var(--primary-light);
+      margin-bottom: 60px;
+    }
+
+    .dark-mode .carousel {
+      background-color: var(--primary-dark);
+    }
+
+    .carousel-inner {
+      display: flex;
+      transition: transform 0.5s ease;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+    }
+
+    .carousel-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      padding: 0 50px;
+    }
+
+    .carousel-text {
+      flex: 1;
+      padding-right: 40px;
+    }
+
+    .carousel-text h1 {
+      font-size: 48px;
+      font-weight: 800;
+      margin-bottom: 20px;
+      line-height: 1.1;
+    }
+
+    .carousel-text p {
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 30px;
+      max-width: 600px;
+      color: var(--gray-800);
+    }
+
+    .dark-mode .carousel-text p {
+      color: var(--gray-300);
+    }
+
+    .carousel-image {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .carousel-image img {
+      max-width: 100%;
+      max-height: 400px;
+      object-fit: contain;
+    }
+
+    .carousel-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, 0.8);
+      color: var(--gray-900);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 18px;
+      cursor: pointer;
+      border: none;
+      z-index: 10;
+      transition: all 0.3s;
+    }
+
+    .dark-mode .carousel-arrow {
+      background-color: rgba(30, 30, 30, 0.8);
+      color: var(--gray-200);
+    }
+
+    .carousel-arrow:hover {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    .carousel-arrow-prev {
+      left: 20px;
+    }
+
+    .carousel-arrow-next {
+      right: 20px;
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+    }
+
+    .carousel-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .dark-mode .carousel-indicator {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .carousel-indicator.active {
+      background-color: var(--accent);
+      transform: scale(1.2);
+    }
+
+    /* Button Styles */
+    .btn {
+      display: inline-block;
+      background-color: var(--accent);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 16px;
+      text-decoration: none;
+      transition: all 0.3s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: var(--accent-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+      margin-left: 15px;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--accent);
+      color: white;
+    }
+
+    /* Categories Section */
+    .categories {
+      padding: 60px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 32px;
+      font-weight: 700;
+      margin-bottom: 40px;
+      position: relative;
+    }
+
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60px;
+      height: 4px;
+      background-color: var(--accent);
+      border-radius: 2px;
+    }
+
+    .categories-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+    }
+
+    .category-card {
+      background-color: var(--primary-light);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      transition: all 0.3s;
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .dark-mode .category-card {
+      background-color: var(--primary-dark);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .category-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+    }
+
+    .category-img {
+      height: 160px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: var(--gray-100);
+      padding: 20px;
+    }
+
+    .dark-mode .category-img {
+      background-color: var(--gray-900);
+    }
+
+    .category-img img {
+      max-width: 100%;
+      max-height: 120px;
+    }
+
+    .category-info {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .category-info h3 {
+      margin: 0;
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .category-info p {
+      margin: 8px 0 0;
+      font-size: 14px;
+      color: var(--gray-800);
+    }
+
+    .dark-mode .category-info p {
+      color: var(--gray-300);
+    }
+
+    /* Features Section */
+    .features {
+      padding: 60px 0;
+      background-color: var(--bg-light);
+    }
+
+    .dark-mode .features {
+      background-color: var(--bg-dark);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .feature {
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    .feature-icon {
+      background-color: rgba(59, 130, 246, 0.1);
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0 auto 20px;
+      font-size: 28px;
+      color: var(--accent);
+      transition: all 0.3s;
+    }
+
+    .feature:hover .feature-icon {
+      transform: scale(1.1);
+      background-color: var(--accent);
+      color: white;
+    }
+
+    .feature h3 {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    .feature p {
+      color: var(--gray-800);
+      line-height: 1.6;
+    }
+
+    .dark-mode .feature p {
+      color: var(--gray-300);
+    }
+
+    /* Reviews Section */
+    .reviews {
+      padding: 80px 0;
+      background-color: var(--primary-light);
+    }
+
+    .dark-mode .reviews {
+      background-color: var(--primary-dark);
+    }
+
+    .reviews-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 30px;
+    }
+
+    .review-card {
+      background-color: var(--bg-light);
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .dark-mode .review-card {
+      background-color: var(--bg-dark);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .review-rating {
+      color: #fbbf24;
+      font-size: 18px;
+      margin-bottom: 15px;
+    }
+
+    .review-text {
+      font-size: 16px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .review-author {
+      display: flex;
+      align-items: center;
+    }
+
+    .review-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      overflow: hidden;
+      margin-right: 15px;
+      background-color: var(--gray-300);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--gray-800);
+      font-weight: bold;
+      font-size: 20px;
+    }
+
+    .dark-mode .review-avatar {
+      background-color: var(--gray-800);
+      color: var(--gray-300);
+    }
+
+    .review-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .review-info h4 {
+      margin: 0 0 5px;
+      font-size: 16px;
+    }
+
+    .review-info p {
+      margin: 0;
+      font-size: 14px;
+      color: var(--gray-800);
+    }
+
+    .dark-mode .review-info p {
+      color: var(--gray-300);
+    }
+
+    .review-quote {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-size: 40px;
+      opacity: 0.15;
+      color: var(--accent);
+    }
+
+    /* Newsletter Section */
+    .newsletter {
+      padding: 60px 0;
+      background-color: var(--bg-light);
+      text-align: center;
+    }
+
+    .dark-mode .newsletter {
+      background-color: var(--bg-dark);
+    }
+
+    .newsletter-container {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .newsletter h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .newsletter p {
+      margin-bottom: 30px;
+      color: var(--gray-800);
+    }
+
+    .dark-mode .newsletter p {
+      color: var(--gray-300);
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 14px 20px;
+      border: 1px solid var(--gray-300);
+      border-radius: 6px 0 0 6px;
+      font-size: 16px;
+      background-color: var(--primary-light);
+    }
+
+    .dark-mode .newsletter-form input {
+      background-color: var(--primary-dark);
+      border-color: var(--gray-800);
+      color: var(--text-dark);
+    }
+
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: var(--accent);
+    }
+
+    .newsletter-form button {
+      padding: 0 25px;
+      background-color: var(--accent);
+      color: white;
+      border: none;
+      border-radius: 0 6px 6px 0;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .newsletter-form button:hover {
+      background-color: var(--accent-hover);
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-light);
+      padding: 60px 0 30px;
+    }
+
+    .dark-mode footer {
+      background-color: var(--primary-dark);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-column h3 {
+      font-size: 18px;
+      margin-bottom: 20px;
+      position: relative;
+      padding-bottom: 10px;
+    }
+
+    .footer-column h3:after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 40px;
+      height: 3px;
+      background-color: var(--accent);
+      border-radius: 1.5px;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: var(--gray-800);
+      text-decoration: none;
+      transition: color 0.2s;
+      font-size: 15px;
+    }
+
+    .dark-mode .footer-links a {
+      color: var(--gray-300);
+    }
+
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+
+    .footer-bottom {
+      padding-top: 30px;
+      border-top: 1px solid var(--gray-200);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .dark-mode .footer-bottom {
+      border-color: var(--gray-800);
+    }
+
+    .footer-bottom-left {
+      display: flex;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: var(--accent);
+      margin-right: 20px;
+      text-decoration: none;
+    }
+
+    .copyright {
+      font-size: 14px;
+      color: var(--gray-800);
+    }
+
+    .dark-mode .copyright {
+      color: var(--gray-300);
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 15px;
+    }
+
+    .social-icon {
+      color: var(--gray-800);
+      font-size: 20px;
+      transition: color 0.2s;
+    }
+
+    .dark-mode .social-icon {
+      color: var(--gray-300);
+    }
+
+    .social-icon:hover {
+      color: var(--accent);
+    }
+
+    /* Theme Switcher */
+    .theme-controls {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .theme-toggle, .color-toggle {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary-light);
+      border: none;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      color: var(--text-light);
+      transition: all 0.3s;
+    }
+
+    .dark-mode .theme-toggle, .dark-mode .color-toggle {
+      background-color: var(--primary-dark);
+      color: var(--text-dark);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .theme-toggle:hover, .color-toggle:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .color-palette {
+      position: absolute;
+      bottom: 60px;
+      right: 60px;
+      background-color: var(--primary-light);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      padding: 15px;
+      display: none;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 130px;
+    }
+
+    .dark-mode .color-palette {
+      background-color: var(--primary-dark);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+
+    .color-palette.active {
+      display: flex;
+    }
+
+    .color-option {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: all 0.2s;
+    }
+
+    .color-option:hover, .color-option.active {
+      transform: scale(1.1);
+      border-color: var(--primary-light);
+    }
+
+    .dark-mode .color-option:hover, .dark-mode .color-option.active {
+      border-color: var(--primary-dark);
+    }
+
+    .color-blue {
+      background-color: #3b82f6;
+    }
+
+    .color-red {
+      background-color: #ef4444;
+    }
+
+    .color-purple {
+      background-color: #8b5cf6;
+    }
+
+    .color-green {
+      background-color: #10b981;
+    }
+
+    .color-amber {
+      background-color: #f59e0b;
+    }
+
+    .color-teal {
+      background-color: #0d9488;
+    }
+
+    .color-pink {
+      background-color: #ec4899;
+    }
+
+    .color-indigo {
+      background-color: #4f46e5;
+    }
+
+    .color-orange {
+      background-color: #f97316;
+    }
+
+    @media (max-width: 768px) {
+      .header-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 15px;
+        order: 2;
+      }
+
+      .search-bar {
+        margin-right: 0;
+        flex: 1;
+        max-width: 300px;
+      }
+
+      .search-bar input {
+        width: 100%;
+      }
+
+      .search-bar input:focus {
+        width: 100%;
+      }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-form input {
+        border-radius: 6px;
+        margin-bottom: 10px;
+      }
+
+      .newsletter-form button {
+        border-radius: 6px;
+        width: 100%;
+        padding: 14px 20px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+      }
+
+      .footer-bottom-left {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .carousel-text h1 {
+        font-size: 28px;
+      }
+
+      .carousel-text p {
+        font-size: 16px;
+      }
+
+      .btn {
+        display: block;
+        width: 100%;
+        margin-bottom: 10px;
+      }
+
+      .btn-outline {
+        margin-left: 0;
+      }
+
+      .section-title {
+        font-size: 26px;
+      }
+
+      .feature-icon {
+        width: 60px;
+        height: 60px;
+        font-size: 24px;
+      }
+    }
+
+    #back-to-top {
+  position: fixed;
+  bottom: 30px;
+  left: 30px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: var(--accent);
+  color: white;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  z-index: 100;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  transform: translateY(20px);
+}
+
+#back-to-top.visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#back-to-top:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-3px);
+}
+
+
+.current-price {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.original-price {
+  text-decoration: line-through;
+  color: var(--gray-800);
+  margin-left: 12px;
+}
+
+.dark-mode .original-price {
+  color: var(--gray-300);
+}
+
+.discount-badge {
+  background-color: #fef3c7;
+  color: #92400e;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 12px;
+  margin-left: 12px;
+}
+
+.dark-mode .discount-badge {
+  background-color: #78350f;
+  color: #fef3c7;
+}
+
+.option-group {
+  margin-bottom: 15px;
+}
+
+.option-group label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.color-options, .text-options {
+  display: flex;
+  gap: 10px;
+}
+
+.color-options .color-option {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.color-options .color-option.active {
+  transform: scale(1.1);
+  border: 2px solid var(--accent);
+}
+
+.text-options .text-option {
+  padding: 6px 12px;
+  border: 1px solid var(--gray-300);
+  border-radius: 6px;
+  cursor: pointer;
+  background: transparent;
+  color: var(--text-light);
+  font-size: 14px;
+  transition: all 0.2s;
+}
+
+.dark-mode .text-options .text-option {
+  border-color: var(--gray-800);
+  color: var(--text-dark);
+}
+
+.text-options .text-option.active {
+  background-color: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+
+
+.quantity-selector {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--gray-300);
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.dark-mode .quantity-selector {
+  border-color: var(--gray-800);
+}
+
+.quantity-btn {
+  background: transparent;
+  border: none;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: var(--text-light);
+  transition: all 0.2s;
+}
+
+.dark-mode .quantity-btn {
+  color: var(--text-dark);
+}
+
+.quantity-btn:hover {
+  background-color: var(--gray-200);
+}
+
+.dark-mode .quantity-btn:hover {
+  background-color: var(--gray-800);
+}
+
+.quantity-selector input {
+  width: 40px;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  background: transparent;
+  color: var(--text-light);
+}
+
+.dark-mode .quantity-selector input {
+  color: var(--text-dark);
+}
+
+.quantity-selector input:focus {
+  outline: none;
+}
+
+.add-to-cart-btn {
+  flex: 1;
+}
+
+.add-to-cart-btn i {
+  margin-right: 8px;
+}
+
+.btn-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid var(--gray-300);
+  color: var(--text-light);
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.dark-mode .btn-icon {
+  border-color: var(--gray-800);
+  color: var(--text-dark);
+}
+
+.btn-icon:hover {
+  background-color: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}
+
+/* Brands Carousel */
+.brands {
+  padding: 50px 0;
+  background-color: var(--primary-light);
+}
+
+.dark-mode .brands {
+  background-color: var(--primary-dark);
+}
+
+.brands-slider {
+  position: relative;
+  overflow: hidden;
+  padding: 30px 0;
+}
+
+.brands-track {
+  display: flex;
+  transition: transform 20s linear infinite;
+  animation: brandScroll 30s linear infinite;
+}
+
+@keyframes brandScroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.brands-track:hover {
+  animation-play-state: paused;
+}
+
+.brand-item {
+  min-width: 150px;
+  height: 80px;
+  margin: 0 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--bg-light);
+  border-radius: 8px;
+  transition: all 0.3s;
+  filter: grayscale(1) opacity(0.7);
+}
+
+.dark-mode .brand-item {
+  background-color: var(--bg-dark);
+}
+
+.brand-item:hover {
+  filter: grayscale(0) opacity(1);
+  transform: scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.brand-item img {
+  max-width: 120px;
+  max-height: 40px;
+  object-fit: contain;
+  filter: grayscale(1) opacity(0.7);
+  transition: all 0.3s ease;
+}
+
+.brand-item:hover img {
+  filter: grayscale(0) opacity(1);
+}
+
+/* Blog Preview Section */
+.blog-preview {
+  padding: 70px 0;
+  background-color: var(--bg-light);
+}
+
+.dark-mode .blog-preview {
+  background-color: var(--bg-dark);
+}
+
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 30px;
+  margin-bottom: 40px;
+}
+
+.blog-card {
+  background-color: var(--primary-light);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s;
+}
+
+.dark-mode .blog-card {
+  background-color: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.blog-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.12);
+}
+
+.blog-image {
+  position: relative;
+  height: 200px;
+}
+
+.blog-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.blog-category {
+  position: absolute;
+  top: 15px;
+  left: 15px;
+  background-color: var(--accent);
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  z-index: 1;
+}
+
+.blog-content {
+  padding: 25px;
+}
+
+.blog-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 15px;
+  line-height: 1.3;
+}
+
+.blog-excerpt {
+  font-size: 15px;
+  color: var(--gray-800);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.dark-mode .blog-excerpt {
+  color: var(--gray-300);
+}
+
+.blog-meta {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: var(--gray-800);
+}
+
+.dark-mode .blog-meta {
+  color: var(--gray-300);
+}
+
+.blog-meta i {
+  margin-right: 5px;
+}
+
+.blog-link {
+  color: var(--accent);
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.blog-link i {
+  margin-left: 5px;
+  transition: transform 0.2s;
+}
+
+.blog-link:hover {
+  color: var(--accent-hover);
+}
+
+.blog-link:hover i {
+  transform: translateX(3px);
+}
+
+.blog-cta {
+  text-align: center;
+}
+
+/* FAQ Section */
+.faq {
+  padding: 70px 0;
+  background-color: var(--bg-light);
+}
+
+.dark-mode .faq {
+  background-color: var(--bg-dark);
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.faq-item {
+  margin-bottom: 15px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  background-color: var(--primary-light);
+  transition: all 0.3s;
+}
+
+.dark-mode .faq-item {
+  background-color: var(--primary-dark);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
+}
+
+.faq-question {
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: background-color 0.3s;
+}
+
+.faq-question:hover {
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.dark-mode .faq-question:hover {
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.faq-question h3 {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 600;
+}
+
+.faq-icon {
+  transition: transform 0.3s;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s;
+}
+
+.faq-item.active .faq-answer {
+  padding: 0 20px 20px;
+  max-height: 200px;
+}
+
+.faq-answer p {
+  margin: 0;
+  line-height: 1.6;
+  color: var(--gray-800);
+}
+
+.dark-mode .faq-answer p {
+  color: var(--gray-300);
+}
+.language-selector {
+  position: fixed;
+  top: 30px;
+  right: 30px;
+  z-index: 100;
+}
+
+.language-toggle {
+  background-color: transparent;
+  border: 1px solid var(--gray-300);
+  border-radius: 20px;
+  padding: 8px 15px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.language-toggle span {
+  font-weight: 600;
+  margin-left: 5px;
+}
+
+.dark-mode .language-toggle {
+  border-color: var(--gray-800);
+  color: var(--text-dark);
+}
+
+.language-toggle:hover {
+  background-color: var(--primary-light);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.dark-mode .language-toggle:hover {
+  background-color: var(--primary-dark);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.language-toggle i {
+  margin-right: 5px;
+}
+
+.language-menu {
+  position: absolute;
+  top: 40px;
+  right: 0;
+  background-color: var(--primary-light);
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 10px 0;
+  min-width: 150px;
+  display: none;
+  transform-origin: top right;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease, visibility 0.2s ease;
+}
+
+.dark-mode .language-menu {
+  background-color: var(--primary-dark);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.language-menu.active {
+  display: block;
+  opacity: 1;
+  visibility: visible;
+}
+
+.language-menu a {
+  display: block;
+  padding: 8px 15px;
+  text-decoration: none;
+  color: var(--text-light);
+  transition: all 0.2s;
+  position: relative;
+  padding-left: 35px;
+}
+
+.language-menu a.active::before {
+  content: '✓';
+  position: absolute;
+  left: 15px;
+  color: var(--accent);
+}
+
+.language-menu a:hover::before {
+  color: white;
+}
+
+.language-menu a::before {
+  font-family: "Font Awesome 5 Free";
+  position: absolute;
+  left: 15px;
+  width: 16px;
+  text-align: center;
+}
+
+.language-menu a[href*="english"]::before {
+  content: '🇺🇸';
+}
+
+.language-menu a[href*="español"]::before {
+  content: '🇪🇸';
+}
+
+.language-menu a[href*="français"]::before {
+  content: '🇫🇷';
+}
+
+.language-menu a[href*="deutsch"]::before {
+  content: '🇩🇪';
+}
+
+.language-menu a[href*="日本語"]::before {
+  content: '🇯🇵';
+}
+
+.language-menu a[href*="中文"]::before {
+  content: '🇨🇳';
+}
+
+/* Mobile Styles - Replace existing media queries */
+@media (max-width: 992px) {
+  
+  .carousel {
+        height: auto;
+      }
+
+      .carousel-content {
+        flex-direction: column;
+        padding: 30px;
+      }
+
+      .carousel-text {
+        padding-right: 0;
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .carousel-text h1 {
+        font-size: 36px;
+      }
+
+      .carousel-image {
+        margin-top: 20px;
+      }
+
+      .header-container {
+        flex-wrap: wrap;
+      }
+
+      .nav-links {
+        order: 3;
+        width: 100%;
+        margin-top: 15px;
+        justify-content: space-between;
+      }
+
+      .nav-links li {
+        margin: 0;
+      }
+  .header-container {
+    padding: 10px 15px;
+  }
+
+  .nav-links {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-light);
+    padding: 12px 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 99;
+    margin: 0;
+  }
+
+  .dark-mode .nav-links {
+    background-color: var(--primary-dark);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links a {
+    flex-direction: column;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .nav-links a i {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+
+  /* Carousel */
+  .carousel {
+    height: auto;
+    margin-bottom: 30px;
+  }
+
+  .carousel-content {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .carousel-text {
+    padding-right: 0;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .carousel-text h1 {
+    font-size: 32px;
+    margin-bottom: 15px;
+  }
+
+  .carousel-text p {
+    font-size: 16px;
+    margin-bottom: 25px;
+  }
+
+  .carousel-image {
+    margin-top: 20px;
+    padding: 0 20px;
+  }
+
+  .carousel-image img {
+    max-height: 300px;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Header Actions */
+  .header-actions {
+    position: fixed;
+    bottom: 80px;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary-light);
+    padding: 12px 20px;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    z-index: 98;
+    justify-content: space-around;
+    margin: 0;
+  }
+
+  .dark-mode .header-actions {
+    background-color: var(--primary-dark);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+  }
+
+  .search-bar {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: var(--primary-light);
+    z-index: 97;
+    margin: 0;
+  }
+
+  .dark-mode .search-bar {
+    background-color: var(--primary-dark);
+  }
+
+  .search-bar input {
+    width: 100%;
+    max-width: none;
+  }
+
+  /* Grid Layouts */
+  .categories-grid,
+  .features-grid,
+  .reviews-grid,
+  .blog-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    padding: 0 15px;
+  }
+
+  /* Newsletter */
+  .newsletter-form {
+    flex-direction: column;
+    padding: 0 20px;
+  }
+
+  .newsletter-form input {
+    margin-bottom: 15px;
+    border-radius: 6px;
+  }
+
+  .newsletter-form button {
+    border-radius: 6px;
+    width: 100%;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0 20px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    text-align: center;
+    padding: 20px;
+  }
+
+  .footer-social {
+    justify-content: center;
+  }
+
+  /* Theme Controls */
+  .theme-controls {
+    bottom: 100px;
+  }
+
+  /* Language Selector */
+  .language-selector {
+    bottom: 100px;
+    right: 90px;
+  }
+
+  /* Back to Top */
+  #back-to-top {
+    bottom: 100px;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Typography */
+  .section-title {
+    font-size: 24px;
+    margin-bottom: 25px;
+  }
+
+  /* Buttons */
+  .btn {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .btn-outline {
+    margin-left: 0;
+  }
+
+  /* Cards */
+  .category-card,
+  .review-card,
+  .blog-card {
+    margin: 0 15px;
+  }
+
+  /* Footer */
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+
+  /* FAQ */
+  .faq-container {
+    padding: 0 15px;
+  }
+
+  .faq-question h3 {
+    font-size: 16px;
+    padding-right: 30px;
+  }
+}
+
+/* Additional Mobile Optimizations */
+@media (hover: none) {
+  .btn:hover,
+  .category-card:hover,
+  .blog-card:hover,
+  .review-card:hover {
+    transform: none;
+  }
+
+  .carousel-arrow {
+    display: none;
+  }
+}
+
+@media (max-width: 360px) {
+  .logo {
+    font-size: 20px;
+  }
+
+  .nav-links a {
+    font-size: 11px;
+  }
+
+  .carousel-text h1 {
+    font-size: 28px;
+  }
+}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container header-container">
+      <a href="#" class="logo">
+        <i class="fas fa-bolt"></i>
+        Electrifi
+      </a>
+      <div class="header-actions">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search products...">
+        </div>
+        <button class="icon-button">
+          <i class="fas fa-user"></i>
+        </button>
+        <button class="icon-button">
+          <i class="fas fa-heart"></i>
+        </button>
+        <button class="icon-button">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </button>
+      </div>
+      <ul class="nav-links">
+        <li>
+          <a href="#">
+            <i class="fas fa-home"></i>
+            Home
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-th-large"></i>
+            Categories
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-star"></i>
+            New
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-tag"></i>
+            Deals
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <i class="fas fa-headset"></i>
+            Support
+          </a>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- Hero Carousel -->
+  <section class="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-slide">
+        <div class="container carousel-content">
+          <div class="carousel-text">
+            <h1>Next-Gen Tech at Your Fingertips</h1>
+            <p>Discover the latest smartphones, laptops, and accessories with exclusive deals and lightning-fast delivery.</p>
+            <a href="#" class="btn">Shop Now</a>
+            <a href="#" class="btn btn-outline">Learn More</a>
+          </div>
+          <div class="carousel-image">
+            <img src="https://images.unsplash.com/photo-1526738549149-8e07eca6c147?w=500&q=80" alt="Latest Electronics">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="container carousel-content">
+          <div class="carousel-text">
+            <h1>Premium Audio Experience</h1>
+            <p>Immerse yourself in crystal-clear sound with our collection of headphones, speakers, and home audio systems.</p>
+            <a href="#" class="btn">Explore Audio</a>
+            <a href="#" class="btn btn-outline">See Deals</a>
+          </div>
+          <div class="carousel-image">
+            <img src="https://images.unsplash.com/photo-1546435770-a3e426bf472b?w=500&q=80" alt="Audio Equipment">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="container carousel-content">
+          <div class="carousel-text">
+            <h1>Smart Home Revolution</h1>
+            <p>Transform your living space with cutting-edge smart home devices that bring convenience and innovation to everyday life.</p>
+            <a href="#" class="btn">Smart Solutions</a>
+            <a href="#" class="btn btn-outline">Installation Help</a>
+          </div>
+          <div class="carousel-image">
+            <img src="https://images.unsplash.com/photo-1558089687-f282ffcbc126?w=500&q=80" alt="Smart Home Devices">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="container carousel-content">
+          <div class="carousel-text">
+            <h1>Gaming Essentials</h1>
+            <p>Level up your gaming setup with high-performance consoles, graphics cards, and accessories designed for the ultimate gaming experience.</p>
+            <a href="#" class="btn">Gaming Gear</a>
+            <a href="#" class="btn btn-outline">View Bundles</a>
+          </div>
+          <div class="carousel-image">
+            <img src="https://images.unsplash.com/photo-1542751371-adc38448a05e?w=500&q=80" alt="Gaming Equipment">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="container carousel-content">
+          <div class="carousel-text">
+            <h1>Cameras & Photography</h1>
+            <p>Capture life's precious moments with our selection of professional cameras, lenses, and photography accessories.</p>
+            <a href="#" class="btn">Explore Cameras</a>
+            <a href="#" class="btn btn-outline">Photography Tips</a>
+          </div>
+          <div class="carousel-image">
+            <img src="https://images.unsplash.com/photo-1516035069371-29a1b244cc32?w=500&q=80" alt="Cameras">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="container carousel-content">
+          <div class="carousel-text">
+            <h1>Wearable Technology</h1>
+            <p>Stay connected and monitor your health with our collection of smartwatches, fitness trackers, and wearable devices.</p>
+            <a href="#" class="btn">Shop Wearables</a>
+            <a href="#" class="btn btn-outline">Compare Models</a>
+          </div>
+          <div class="carousel-image">
+            <img src="https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=500&q=80" alt="Wearable Tech">
+          </div>
+        </div>
+      </div>
+      <div class="carousel-slide">
+        <div class="container carousel-content">
+          <div class="carousel-text">
+            <h1>Home Office Solutions</h1>
+            <p>Create the perfect workspace with our ergonomic and productivity-enhancing home office electronics and accessories.</p>
+            <a href="#" class="btn">Office Essentials</a>
+            <a href="#" class="btn btn-outline">WFH Guides</a>
+          </div>
+          <div class="carousel-image">
+            <img src="https://images.unsplash.com/photo-1497493292307-31c376b6e479?w=500&q=80" alt="Home Office">
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <button class="carousel-arrow carousel-arrow-prev">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="carousel-arrow carousel-arrow-next">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    <div class="carousel-indicators">
+      <div class="carousel-indicator active"></div>
+      <div class="carousel-indicator"></div>
+      <div class="carousel-indicator"></div>
+      <div class="carousel-indicator"></div>
+      <div class="carousel-indicator"></div>
+      <div class="carousel-indicator"></div>
+      <div class="carousel-indicator"></div>
+    </div>
+  </section>
+
+  <!-- Categories Section -->
+  <section class="categories">
+    <div class="container">
+      <h2 class="section-title">Top Categories</h2>
+      <div class="categories-grid">
+        <a href="#" class="category-card">
+          <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=300&q=80" alt="Smartphones">
+          </div>
+          <div class="category-info">
+            <h3>Smartphones</h3>
+            <p>Latest models and accessories</p>
+          </div>
+        </a>
+        <a href="#" class="category-card">
+          <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=300&q=80" alt="Laptops">
+          </div>
+          <div class="category-info">
+            <h3>Laptops & Computers</h3>
+            <p>For work and gaming</p>
+          </div>
+        </a>
+        <a href="#" class="category-card">
+          <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=300&q=80" alt="Audio">
+          </div>
+          <div class="category-info">
+            <h3>Audio</h3>
+            <p>Headphones, speakers & more</p>
+          </div>
+        </a>
+        <a href="#" class="category-card">
+          <div class="category-img">
+            <img src="https://images.unsplash.com/photo-1558002038-1055907df827?w=300&q=80" alt="Smart Home">
+          </div>
+          <div class="category-info">
+            <h3>Smart Home</h3>
+            <p>Connected living solutions</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+   <!-- Features Section -->
+   <section class="features">
+    <div class="container">
+      <h2 class="section-title">Why Shop with Electrifi</h2>
+      <div class="features-grid">
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="fas fa-truck"></i>
+          </div>
+          <h3>Fast Delivery</h3>
+          <p>Free shipping on orders over $50 with 2-day delivery on most items.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="fas fa-shield-alt"></i>
+          </div>
+          <h3>Extended Warranty</h3>
+          <p>Exclusive protection plans and extended warranty options on all devices.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="fas fa-exchange-alt"></i>
+          </div>
+          <h3>Easy Returns</h3>
+          <p>30-day hassle-free return policy with free return shipping.</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">
+            <i class="fas fa-headset"></i>
+          </div>
+          <h3>24/7 Support</h3>
+          <p>Technical assistance and customer service available around the clock.</p>
+        </div>
+        <div class="feature">
+            <div class="feature-icon">
+              <i class="fas fa-award"></i>
+            </div>
+            <h3>Price Match Guarantee</h3>
+            <p>Found a better price elsewhere? We'll match it and give you an additional 5% discount.</p>
+          </div>
+          <div class="feature">
+            <div class="feature-icon">
+              <i class="fas fa-graduation-cap"></i>
+            </div>
+            <h3>Expert Setup Assistance</h3>
+            <p>Our tech experts offer free setup guidance to ensure your devices work perfectly from day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="brands">
+    <div class="container">
+      <h2 class="section-title">Brands We Carry</h2>
+      <div class="brands-slider">
+        <div class="brands-track">
+          <div class="brand-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/f/fa/Apple_logo_black.svg" alt="Apple">
+          </div>
+          <div class="brand-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/24/Samsung_Logo.svg" alt="Samsung">
+          </div>
+          <div class="brand-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c9/Sony_logo.svg" alt="Sony">
+          </div>
+          <div class="brand-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google">
+          </div>
+          <div class="brand-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/9/96/Microsoft_logo_%282012%29.svg" alt="Microsoft">
+          </div>
+          <div class="brand-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/LG_logo_%282015%29.svg" alt="LG">
+          </div>
+          <div class="brand-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/60/Bose_logo.svg" alt="Bose">
+          </div>
+          <div class="brand-item">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/Lenovo_logo_2015.svg" alt="Lenovo">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reviews Section -->
+  <section class="reviews">
+    <div class="container">
+      <h2 class="section-title">Customer Reviews</h2>
+      <div class="reviews-grid">
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">The MacBook Pro I ordered arrived ahead of schedule and was exactly as described. The setup assistance was incredibly helpful. Electrifi has become my go-to electronics store!</p>
+          <div class="review-author">
+            <div class="review-avatar">
+              JS
+            </div>
+            <div class="review-info">
+              <h4>James Smith</h4>
+              <p>Verified Buyer</p>
+            </div>
+          </div>
+          <i class="fas fa-quote-right review-quote"></i>
+        </div>
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star-half-alt"></i>
+          </div>
+          <p class="review-text">Customer service was outstanding when I needed help choosing between different wireless earbuds. They took time to understand my needs and recommended the perfect pair for my lifestyle.</p>
+          <div class="review-author">
+            <div class="review-avatar">
+              AM
+            </div>
+            <div class="review-info">
+              <h4>Alex Martinez</h4>
+              <p>Verified Buyer</p>
+            </div>
+          </div>
+          <i class="fas fa-quote-right review-quote"></i>
+        </div>
+        <div class="review-card">
+          <div class="review-rating">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+          </div>
+          <p class="review-text">I've purchased several smart home devices from Electrifi and the setup guides they provide make integration seamless. Their prices are competitive and the loyalty program adds real value.</p>
+          <div class="review-author">
+            <div class="review-avatar">
+              KJ
+            </div>
+            <div class="review-info">
+              <h4>Kira Johnson</h4>
+              <p>Verified Buyer</p>
+            </div>
+          </div>
+          <i class="fas fa-quote-right review-quote"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section (add after Reviews section) -->
+<section class="faq">
+    <div class="container">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-container">
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How long does shipping take?</h3>
+            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Standard shipping typically takes 3-5 business days within the continental US. Express shipping (1-2 business days) is available for an additional fee. International shipping times vary by location.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What payment methods do you accept?</h3>
+            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>We accept all major credit cards (Visa, Mastercard, American Express, Discover), PayPal, Apple Pay, Google Pay, and Electrifi gift cards. We also offer financing options through Affirm and Klarna.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How does the extended warranty work?</h3>
+            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Our extended warranty covers mechanical and electrical failures for up to 3 years beyond the manufacturer's warranty. It includes free repairs, replacements, and 24/7 technical support. You can add it to your purchase during checkout.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I return opened electronics?</h3>
+            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes, most opened electronics can be returned within 30 days of purchase. The item must be in like-new condition with all original packaging and accessories. Some products like earbuds and custom-configured devices may have different return policies.</p>
+          </div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you offer price matching?</h3>
+            <span class="faq-icon"><i class="fas fa-chevron-down"></i></span>
+          </div>
+          <div class="faq-answer">
+            <p>Yes! If you find a lower price on an identical item from a qualified retailer within 14 days of purchase, we'll match it and refund you the difference plus an additional 5% of the difference.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Blog Preview Section (add before newsletter) -->
+<section class="blog-preview">
+    <div class="container">
+      <h2 class="section-title">Tech Insights Blog</h2>
+      <div class="blog-grid">
+        <article class="blog-card">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=350&q=80" alt="Headphones Guide">
+            <span class="blog-category">Guides</span>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">Ultimate Guide to Choosing Your Perfect Headphones</h3>
+            <p class="blog-excerpt">Learn about the different types of headphones and which features matter most for your listening style.</p>
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> April 10, 2025</span>
+              <span><i class="far fa-comment"></i> 24 Comments</span>
+            </div>
+            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1578598336003-867ac56d90a2?w=350&q=80" alt="Foldable Smartphones">
+            <span class="blog-category">Reviews</span>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">The New Generation of Foldable Smartphones: Worth the Hype?</h3>
+            <p class="blog-excerpt">We analyze the latest foldable devices and whether they're ready for mainstream adoption.</p>
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> April 5, 2025</span>
+              <span><i class="far fa-comment"></i> 37 Comments</span>
+            </div>
+            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+        <article class="blog-card">
+          <div class="blog-image">
+            <img src="https://images.unsplash.com/photo-1558002038-1055907df827?w=350&q=80" alt="Smart Home Setup">
+            <span class="blog-category">How-To</span>
+          </div>
+          <div class="blog-content">
+            <h3 class="blog-title">Setting Up Your Smart Home: A Beginner's Journey</h3>
+            <p class="blog-excerpt">Everything you need to know about creating a connected and automated living space.</p>
+            <div class="blog-meta">
+              <span><i class="far fa-calendar"></i> March 28, 2025</span>
+              <span><i class="far fa-comment"></i> 19 Comments</span>
+            </div>
+            <a href="#" class="blog-link">Read More <i class="fas fa-arrow-right"></i></a>
+          </div>
+        </article>
+      </div>
+      <div class="blog-cta">
+        <a href="#" class="btn">View All Articles</a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Newsletter Section -->
+  <section class="newsletter">
+    <div class="container newsletter-container">
+      <h2>Stay Updated with Electrifi</h2>
+      <p>Subscribe to our newsletter for exclusive deals, tech news, and early access to product launches.</p>
+      <form class="newsletter-form">
+        <input type="email" placeholder="Your email address" required>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-column">
+          <h3>Shop</h3>
+          <ul class="footer-links">
+            <li><a href="#">Smartphones</a></li>
+            <li><a href="#">Laptops & Computers</a></li>
+            <li><a href="#">Audio Equipment</a></li>
+            <li><a href="#">Smart Home</a></li>
+            <li><a href="#">Gaming</a></li>
+            <li><a href="#">Accessories</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul class="footer-links">
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">FAQs</a></li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns Policy</a></li>
+            <li><a href="#">Track Order</a></li>
+            <li><a href="#">Warranty Claims</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Company</h3>
+          <ul class="footer-links">
+            <li><a href="#">About Us</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Press</a></li>
+            <li><a href="#">Partnerships</a></li>
+            <li><a href="#">Sustainability</a></li>
+          </ul>
+        </div>
+        <div class="footer-column">
+          <h3>Legal</h3>
+          <ul class="footer-links">
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-bottom-left">
+          <a href="#" class="footer-logo">
+            <i class="fas fa-bolt"></i> Electrifi
+          </a>
+          <p class="copyright">© 2025 Electrifi Inc. All rights reserved.</p>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+          <a href="#" class="social-icon"><i class="fab fa-pinterest"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Theme Controls -->
+  <div class="theme-controls">
+    <button class="theme-toggle" aria-label="Toggle dark/light mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="color-toggle" aria-label="Change theme color">
+      <i class="fas fa-palette"></i>
+    </button>
+    <div class="color-palette">
+      <div class="color-option color-blue active" data-color="#3b82f6"></div>
+      <div class="color-option color-red" data-color="#ef4444"></div>
+      <div class="color-option color-purple" data-color="#8b5cf6"></div>
+      <div class="color-option color-green" data-color="#10b981"></div>
+      <div class="color-option color-amber" data-color="#f59e0b"></div>
+      <div class="color-option color-teal" data-color="#0d9488"></div>
+      <div class="color-option color-pink" data-color="#ec4899"></div>
+      <div class="color-option color-indigo" data-color="#4f46e5"></div>
+      <div class="color-option color-orange" data-color="#f97316"></div>
+    </div>
+  </div>
+  <button id="back-to-top" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <div class="language-selector">
+    <button class="language-toggle">
+      <i class="fas fa-globe"></i>
+      <span>EN</span>
+    </button>
+    <div class="language-menu">
+      <a href="#english" class="active">English</a>
+      <a href="#español">Español</a>
+      <a href="#français">Français</a>
+      <a href="#deutsch">Deutsch</a>
+      <a href="#日本語">日本語</a>
+      <a href="#中文">中文</a>
+    </div>
+  </div>
+
+  
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Carousel functionality
+  const carousel = document.querySelector('.carousel');
+  const carouselInner = document.querySelector('.carousel-inner');
+  const slides = document.querySelectorAll('.carousel-slide');
+  const prevBtn = document.querySelector('.carousel-arrow-prev');
+  const nextBtn = document.querySelector('.carousel-arrow-next');
+  const indicators = document.querySelectorAll('.carousel-indicator');
+  
+  let currentSlide = 0;
+  const slideCount = slides.length;
+  
+  function goToSlide(index) {
+    if (index < 0) {
+      index = slideCount - 1;
+    } else if (index >= slideCount) {
+      index = 0;
+    }
+    
+    carouselInner.style.transform = `translateX(-${index * 100}%)`;
+    currentSlide = index;
+    
+    // Update indicators
+    indicators.forEach((indicator, i) => {
+      indicator.classList.toggle('active', i === currentSlide);
+    });
+  }
+  
+  // Initialize carousel
+  if (prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      goToSlide(currentSlide - 1);
+    });
+    
+    nextBtn.addEventListener('click', () => {
+      goToSlide(currentSlide + 1);
+    });
+  }
+  
+  // Add click events to indicators
+  indicators.forEach((indicator, index) => {
+    indicator.addEventListener('click', () => {
+      goToSlide(index);
+    });
+  });
+  
+  // Auto slide
+  let slideInterval = setInterval(() => {
+    goToSlide(currentSlide + 1);
+  }, 5000);
+  
+  if (carousel) {
+    carousel.addEventListener('mouseenter', () => {
+      clearInterval(slideInterval);
+    });
+    
+    carousel.addEventListener('mouseleave', () => {
+      slideInterval = setInterval(() => {
+        goToSlide(currentSlide + 1);
+      }, 5000);
+    });
+  }
+  
+  // Theme and color management
+  const themeToggle = document.querySelector('.theme-toggle');
+  const colorToggle = document.querySelector('.color-toggle');
+  const colorPalette = document.querySelector('.color-palette');
+  const colorOptions = document.querySelectorAll('.color-option');
+  
+  // Function to darken a hex color
+  function getDarkerColor(hex, factor) {
+    // Remove the # if present
+    hex = hex.replace('#', '');
+    
+    // Convert hex to RGB
+    let r = parseInt(hex.substring(0, 2), 16);
+    let g = parseInt(hex.substring(2, 4), 16);
+    let b = parseInt(hex.substring(4, 6), 16);
+    
+    // Darken each component
+    r = Math.floor(r * (1 - factor));
+    g = Math.floor(g * (1 - factor));
+    b = Math.floor(b * (1 - factor));
+    
+    // Convert back to hex
+    return `#${r.toString(16).padStart(2, '0')}${g.toString(16).padStart(2, '0')}${b.toString(16).padStart(2, '0')}`;
+  }
+  
+  // Function to save all preferences to local storage
+  function saveAllPreferences() {
+    try {
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      const accentColor = getComputedStyle(document.documentElement).getPropertyValue('--accent').trim();
+      const languageCode = document.querySelector('.language-toggle span').textContent;
+      
+      const preferences = {
+        darkMode: isDarkMode,
+        accentColor: accentColor,
+        language: languageCode
+      };
+      
+      localStorage.setItem('electrifiPreferences', JSON.stringify(preferences));
+    } catch (error) {
+      console.error('Error saving preferences:', error);
+    }
+  }
+  
+  // Function to load preferences from local storage
+  function loadPreferences() {
+    try {
+      const savedPrefs = localStorage.getItem('electrifiPreferences');
+      
+      if (savedPrefs) {
+        const preferences = JSON.parse(savedPrefs);
+        
+        // Apply dark mode if saved
+        if (preferences.darkMode) {
+          document.body.classList.add('dark-mode');
+          if (themeToggle) {
+            const themeIcon = themeToggle.querySelector('i');
+            if (themeIcon) {
+              themeIcon.classList.replace('fa-moon', 'fa-sun');
+            }
+          }
+        }
+        
+        // Apply accent color if saved
+        if (preferences.accentColor) {
+          document.documentElement.style.setProperty('--accent', preferences.accentColor);
+          
+          // Determine hover color (darker variant)
+          const darkerColor = getDarkerColor(preferences.accentColor, 0.2);
+          document.documentElement.style.setProperty('--accent-hover', darkerColor);
+          
+          // Update active state on color options
+          colorOptions.forEach(option => {
+            const optionColor = option.getAttribute('data-color');
+            option.classList.toggle('active', optionColor === preferences.accentColor);
+          });
+        }
+        
+        // Apply language if saved
+        if (preferences.language) {
+          const languageDisplay = document.querySelector('.language-toggle span');
+          if (languageDisplay) {
+            languageDisplay.textContent = preferences.language;
+            
+            // Find and mark the active language option
+            const languageOptions = document.querySelectorAll('.language-menu a');
+            languageOptions.forEach(option => {
+              const langCode = option.textContent.slice(0, 2).toUpperCase();
+              option.classList.toggle('active', langCode === preferences.language);
+            });
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Error loading preferences:', error);
+      // Reset preferences if corrupted
+      localStorage.removeItem('electrifiPreferences');
+    }
+  }
+  
+  // Initialize theme toggle with local storage
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      
+      // Change icon
+      const icon = themeToggle.querySelector('i');
+      if (icon) {
+        if (document.body.classList.contains('dark-mode')) {
+          icon.classList.replace('fa-moon', 'fa-sun');
+        } else {
+          icon.classList.replace('fa-sun', 'fa-moon');
+        }
+      }
+      
+      // Save preferences
+      saveAllPreferences();
+    });
+  }
+  
+  // Color palette toggle
+  if (colorToggle && colorPalette) {
+    colorToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      colorPalette.classList.toggle('active');
+    });
+    
+    // Close color palette when clicking elsewhere
+    document.addEventListener('click', (e) => {
+      if (!colorToggle.contains(e.target) && !colorPalette.contains(e.target)) {
+        colorPalette.classList.remove('active');
+      }
+    });
+  }
+  
+  // Color theme options
+  colorOptions.forEach(option => {
+    option.addEventListener('click', () => {
+      const color = option.getAttribute('data-color');
+      document.documentElement.style.setProperty('--accent', color);
+      
+      // Determine hover color (darker variant)
+      const darkerColor = getDarkerColor(color, 0.2);
+      document.documentElement.style.setProperty('--accent-hover', darkerColor);
+      
+      // Update active state
+      colorOptions.forEach(opt => opt.classList.remove('active'));
+      option.classList.add('active');
+      
+      // Save preferences
+      saveAllPreferences();
+    });
+  });
+  
+  // Back to top button functionality
+  const backToTopBtn = document.getElementById('back-to-top');
+  
+  if (backToTopBtn) {
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+    
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
+  
+  // FIXED: Language selector functionality
+  const languageToggle = document.querySelector('.language-toggle');
+  const languageMenu = document.querySelector('.language-menu');
+  const languageOptions = document.querySelectorAll('.language-menu a');
+  const languageDisplay = document.querySelector('.language-toggle span');
+  
+  if (languageToggle && languageMenu) {
+    // Toggle language menu
+    languageToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      languageMenu.classList.toggle('active');
+    });
+    
+    // Close language menu when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!languageToggle.contains(e.target) && !languageMenu.contains(e.target)) {
+        languageMenu.classList.remove('active');
+      }
+    });
+    
+    // Handle language selection
+    languageOptions.forEach(option => {
+      option.addEventListener('click', (e) => {
+        e.preventDefault();
+        
+        // Get the selected language code
+        const langCode = option.textContent.slice(0, 2).toUpperCase();
+        
+        // Update the display text
+        if (languageDisplay) {
+          languageDisplay.textContent = langCode;
+        }
+        
+        // Update active state
+        languageOptions.forEach(opt => opt.classList.remove('active'));
+        option.classList.add('active');
+        
+        // Close the menu
+        languageMenu.classList.remove('active');
+        
+        // Save preferences
+        saveAllPreferences();
+        
+        // You would typically implement actual language change here
+        console.log(`Language changed to: ${option.textContent}`);
+      });
+    });
+  }
+  
+  // FIXED: FAQ functionality
+  const faqItems = document.querySelectorAll('.faq-item');
+  
+  faqItems.forEach(item => {
+    const question = item.querySelector('.faq-question');
+    const answer = item.querySelector('.faq-answer');
+    
+    if (question && answer) {
+      question.addEventListener('click', () => {
+        // Toggle current FAQ item
+        const isActive = item.classList.toggle('active');
+        
+        // Toggle icon
+        const icon = question.querySelector('.faq-icon i');
+        if (icon) {
+          if (isActive) {
+            icon.classList.replace('fa-chevron-down', 'fa-chevron-up');
+          } else {
+            icon.classList.replace('fa-chevron-up', 'fa-chevron-down');
+          }
+        }
+        
+        // Set max-height for smooth animation
+        if (isActive) {
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        } else {
+          answer.style.maxHeight = '0';
+        }
+      });
+    }
+  });
+  
+  // Mobile menu functionality
+  const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
+  
+  if (mobileMenuToggle && navLinks) {
+    mobileMenuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('active');
+      mobileMenuToggle.classList.toggle('active');
+      
+      // Toggle between menu and close icons
+      const icon = mobileMenuToggle.querySelector('i');
+      if (icon) {
+        if (navLinks.classList.contains('active')) {
+          icon.classList.replace('fa-bars', 'fa-times');
+        } else {
+          icon.classList.replace('fa-times', 'fa-bars');
+        }
+      }
+    });
+    
+    // Close mobile menu when clicking a link
+    const navLinkItems = navLinks.querySelectorAll('a');
+    navLinkItems.forEach(link => {
+      link.addEventListener('click', () => {
+        if (window.innerWidth <= 768) {
+          navLinks.classList.remove('active');
+          mobileMenuToggle.classList.remove('active');
+          
+          const icon = mobileMenuToggle.querySelector('i');
+          if (icon && icon.classList.contains('fa-times')) {
+            icon.classList.replace('fa-times', 'fa-bars');
+          }
+        }
+      });
+    });
+    
+    // Close mobile menu when resizing to desktop
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+        
+        const icon = mobileMenuToggle.querySelector('i');
+        if (icon && icon.classList.contains('fa-times')) {
+          icon.classList.replace('fa-times', 'fa-bars');
+        }
+      }
+    });
+  }
+  
+  // Initialize all preferences
+  loadPreferences();
+});
+</script>
+</body>
+</html>
